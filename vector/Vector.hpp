@@ -80,6 +80,7 @@ public:
 };
 
 class Segment : public Figure {
+private:
     Point a;
     Point b;
 public:
@@ -96,6 +97,7 @@ public:
 };
 
 class Line : public Figure {
+private:
     double a, b, c;
 public:
     Line(double a, double b, double c);
@@ -103,39 +105,38 @@ public:
     double geta() const;
     double getb() const;
     double getc() const;
+    Point proekciya(const Point &) const;
     Line(const Point& pnt1, const Vector & vec);
-    
     Vector lineGetVector() const;
     bool ifCrossesLine(const Line &) const;
     double parallDist(const Line &) const;
     Point lineCrossLine(const Line &) const;
     Point lineGetPoint() const;
-    Point proekciya(const Point &) const;
     double distanceToPoint(const Point &) const;
-    
     void shift(const Vector&);
     bool includesPoint(const Point &) const;
     bool crossSegment(const Segment &) const;
 };
 
 class Ray : public Figure {
+private:
     Point a;
     Vector vec;
+    Line rayGetLine() const;
 public:
     Ray(const Point &, const Vector &);
     Ray(const Point &, const Point &);
-    
     Point rayGeta() const;
     Vector rayGetVector() const;
     void shift(const Vector &);
     bool includesPoint(const Point &) const;
     bool crossSegment(const Segment &) const;
-    Line rayGetLine() const;
     double distanceToPoint(const Point &) const;
     
 };
 
 class Polygon : public Figure {
+private:
     int n;
     Point *pointMas;
 public:
